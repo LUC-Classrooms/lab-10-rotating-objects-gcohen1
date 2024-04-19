@@ -5,6 +5,11 @@ Study the example posted this week under rotating objects and reconstruct some o
 
 Specifically, add some code to the display() method that will create a new layer, translate to the correct x/y location, and rotate the image by the value of this.angle
 */
+this.spin = function(){
+  this.angle += .01;
+  this.scale *= 0.09; 
+}
+
 
 var obj1, obj2; // create variables to contain objects
 
@@ -32,6 +37,7 @@ function draw() {
 
   if(mouse1 < 50) { // first, see if the mouse is within range
     if(mouseIsPressed){
+      obj1.spin(); 
       // spin object 1 by calling its spin() method
       // you will have to create that method inside the myClass constructor ...
     } else {
@@ -40,6 +46,7 @@ function draw() {
   }
   if(mouse2 < 50) {
     if(mouseIsPressed){
+      obj2.spin(); 
       // spin object 2 by calling its spin() method
     } else {
       obj2.reset();
@@ -78,11 +85,14 @@ function myClass(tempX, tempY){
   
   The argument to rotate() should be "this.angle", which is affected by the spin() and reset() methods
 */
-    
+    push();
+    translate(this.x, this.y); 
+    rotate(this.angle); 
+    scale(this.scale);
     fill(this.color);
     rectMode(CENTER);
     // change the location to 0, 0
-    rect(this.x, this.y, this.diam, this.diam);
+    rect(0, 0, this.diam, this.diam);
     
   }
   

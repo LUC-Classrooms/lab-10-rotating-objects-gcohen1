@@ -5,10 +5,7 @@ Study the example posted this week under rotating objects and reconstruct some o
 
 Specifically, add some code to the display() method that will create a new layer, translate to the correct x/y location, and rotate the image by the value of this.angle
 */
-this.spin = function(){
-  this.angle += .01;
-  this.scale *= 0.09; 
-}
+
 
 
 var obj1, obj2; // create variables to contain objects
@@ -71,11 +68,16 @@ function myClass(tempX, tempY){
   Create a spin method here. Look at the reset() method below and the spin() method from the Sakai example for this week.
   the function assigned to this.spin should take a number argument; that number should be _added_ to the value of this.angle. The reset() method sets this.angle back to 0, and this.scale back to 1
   */
-  
+  this.spin = function(){
+    this.angle += .01;
+    this.scale *= 0.09; 
+  }
   this.reset = function(){
       this.angle = 0;
       this.scale = 1;
   }
+  
+  
   
   this.display = function(){
 /*
@@ -89,6 +91,7 @@ function myClass(tempX, tempY){
     translate(this.x, this.y); 
     rotate(this.angle); 
     scale(this.scale);
+    spin(this.angle); 
     fill(this.color);
     rectMode(CENTER);
     // change the location to 0, 0
